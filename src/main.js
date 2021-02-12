@@ -7,12 +7,13 @@ async function getCall() {
   
     console.log(response.statusText)
     console.log(response)
-    const objArr = Object.keys(response.conversion_rates)
-    console.log(objArr);
-    console.log(response.conversion_rates[3])
-    console.log(response.conversion_rates.JPY)
+    const objKeys = Object.keys(response.conversion_rates)
+    const objValues = Object.keys(response.conversion_rates)
+
     for (let i = 0; i < Object.keys(response.conversion_rates).length; i++) {
-      document.getElementById("currency").innerHTML = document.getElementById("currency").innerHTML + `<option value="${objArr[i]}"></option>`
+      document.getElementById("currency").innerHTML = document.getElementById("currency").innerHTML + `<option value="${objKeys[i]}"></option>`
+      document.getElementById("currency2").innerHTML = document.getElementById("currency2").innerHTML + `<option value="${objKeys[i]}"></option>`
+ 
     }
 }
 
@@ -20,6 +21,7 @@ async function getCall() {
 $(document).ready(function() { 
   $('#convert').click(function(event) {
     const currency1 = document.getElementById("currency1").value;
+    const currency2 = document.getElementById("currency2").value;
     getCall();
   })
 });
