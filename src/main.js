@@ -6,11 +6,7 @@ async function getCall() {
   let currency1 = document.getElementById("currency1").value;
   let currency2 = document.getElementById("currency2").value;
   let amount = document.getElementById("amount").value;
-  console.log(currency1);
-  console.log(currency2);
-  console.log(amount);
   try {
-
     const response = await CurrencyService.getCurrency(currency1, currency2, amount);
     console.log(response);
     if (response.result === "error") {
@@ -18,7 +14,6 @@ async function getCall() {
     }
 
     //   const objList = await CurrencyService.getList();
-
     //   const objKeys = Object.keys(objList.conversion_rates)
     //  const objValues = Object.keys(objList.conversion_rates)
 
@@ -42,6 +37,12 @@ async function getCall() {
 
 $(document).ready(function () {
   $('#convert').click(function (event) {
-    getCall();
+    getCall()
   })
+
+  document.getElementById("clear-input").onclick = function () {
+    document.getElementById("currency1").value = "";
+    document.getElementById("currency2").value = "";
+    document.getElementById("amount").value = "";
+  }
 });

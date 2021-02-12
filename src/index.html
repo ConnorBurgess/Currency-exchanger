@@ -6,16 +6,17 @@
 <body>
   <div id="output"></div>
   <button id="convert">Convert</button>
+  <button id="clear-input">Clear Input</button>
   <label for="currency1">Convert From</label>
-  <input list="currency" id="currency1" autocomplete="off">
-  <datalist id="currency">
+  <input list="currency-list" id="currency1" value="USD" autocomplete="off">
+  <datalist id="currency-list">
   </datalist>
-  <label for="currency1">Convert To</label>
-  <input list="currency2" id="currency2" autocomplete="off">
-  <datalist id="currency2">
+  <label for="currency2">Convert To</label>
+  <input list="currency-list2" id="currency2" value="CAD" autocomplete="off">
+  <datalist id="currency-list2">
   </datalist>
   <label for="amount">Enter Amount</label>
-  <input input="number" id="amount" autocomplete="off">
+  <input input="number" id="amount" value="100" autocomplete="off">
 
 
 </body>
