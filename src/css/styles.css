@@ -6,6 +6,10 @@ body {
 }
 h1 {
   text-align: center;
+  color: #3C403D;
+  top: 1vw;
+  right: 55vw;
+  position:absolute;
 }
 #search-card {
   display:flex;
@@ -17,6 +21,16 @@ h1 {
   border-radius: 4px;
   font-size: 37;
   text-align: center;
+
+}
+#button-area{ 
+left: 10vw;
+top: 33vw;
+position: relative;
+font-family: 'Oranienbaum', serif;
+color: white;
+font-size: 25px;
+display: block;
 
 }
 
@@ -52,13 +66,24 @@ h1 {
 #main-word {
   position: absolute;
   top: 10vw;
-  left: 25vw;
+  left: 16vw;
+  font-size: 55px;
+  color: white;
+  font-family: 'Oranienbaum', serif;
+  font-weight: 900;
 }
 #easy-word {
   position: absolute;
   font-weight: bold;
   top: 10vw;
   color:green;
-  left: 48.5vw;
+  left: 50vw;
+  font-size: 55px;
+  font-family: 'Oranienbaum', serif;
+  color: #3C403D;
+  font-stretch: condensed;
+  transform: scale(1, 2);
+
 
 }
+

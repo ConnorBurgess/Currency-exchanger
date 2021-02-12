@@ -1,12 +1,19 @@
 <html lang="en-US">
 <head>
   <title>Currency Exchanger</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
+<body id="">
+  <h1> Simple Search</h1>
+  <div id ="search-card">
+    <p id="main-word"> Navigating Forex should be<p id = "easy-word"> simple</p>. . .</p>
+  </div>
+  <button id="new-search">Begin a new Currency Search</button>
   <div id="output"></div>
-  <button id="convert">Convert</button>
-  <button id="clear-input">Clear Input</button>
+  <div id="button-area"> 
   <label for="currency1">Convert From</label>
   <input list="currency-list" id="currency1" value="USD" autocomplete="off">
   <datalist id="currency-list">
@@ -17,7 +24,9 @@
   </datalist>
   <label for="amount">Enter Amount</label>
   <input input="number" id="amount" value="100" autocomplete="off">
-
+  <button id="convert">Convert</button>
+  <button id="clear-input">Clear Input</button>
+</div>
 
 </body>
 </html>
