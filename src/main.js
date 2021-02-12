@@ -6,14 +6,17 @@ async function getCall() {
   let currency1 = document.getElementById("currency1").value;
   let currency2 = document.getElementById("currency2").value;
   let amount = document.getElementById("amount").value;
+  console.log(currency1);
+  console.log(currency2);
+  console.log(amount);
   const response = await CurrencyService.getCurrency(currency1, currency2, amount);
   const objList = await CurrencyService.getList();
   const objKeys = Object.keys(objList.conversion_rates)
-  const objValues = Object.keys(objList.conversion_rates)
+ const objValues = Object.keys(objList.conversion_rates)
 
   for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
-    document.getElementById("currency").innerHTML = document.getElementById("currency").innerHTML + `<option value="${objKeys[i]}"></option>`
-    document.getElementById("currency2").innerHTML = document.getElementById("currency2").innerHTML + `<option value="${objKeys[i]}"></option>`
+    document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
+    document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
 
   }
   document.getElementById("output").innerHTML = `
