@@ -12,16 +12,6 @@ async function getCall() {
     if (response.result === "error") {
       throw Error(response["error-type"]);
     }
-
-    //   const objList = await CurrencyService.getList();
-    //   const objKeys = Object.keys(objList.conversion_rates)
-    //  const objValues = Object.keys(objList.conversion_rates)
-
-    //   for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
-    //     document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
-    //     document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
-
-    //   }
     document.getElementById("output").innerHTML = `
   Converting from ${currency1} to ${currency2} . . . 
   The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
@@ -34,7 +24,19 @@ async function getCall() {
   }
 }
 
+async function getDropDown() {
+  const objList = await CurrencyService.getList();
+  let checkObj = isEmpty(objList);
+  if (checkObj === false) {
+  const objKeys = Object.keys(objList.conversion_rates)
+  const objValues = Object.keys(objList.conversion_rates)
 
+  for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
+    document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
+    document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
+  }
+}
+}
 $(document).ready(function () {
   $('#convert').click(function (event) {
     getCall()
@@ -45,4 +47,12 @@ $(document).ready(function () {
     document.getElementById("currency2").value = "";
     document.getElementById("amount").value = "";
   }
+
+  document.getElementById("new-search").onclick = function () {
+    getDropDown();
+  }
 });
+
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
+}
