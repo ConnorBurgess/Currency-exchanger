@@ -71,6 +71,9 @@ display: block;
   color: white;
   font-family: 'Oranienbaum', serif;
   font-weight: 900;
+  height: 40px;
+  animation: an 1s ease-out 1 both;
+  display: inline-block;
 }
 #easy-word {
   position: absolute;
@@ -87,3 +90,29 @@ display: block;
 
 }
 
+
+.center{
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+p{
+  width: 70%;
+  font-size: 30px;
+  display: block;
+  text-align: center;
+}
+
+@keyframes an{
+  from{
+      opacity: 0;
+      transform: perspective(500px) translate3d(-35px, -40px, -150px) rotate3d(1, -1, 0, 35deg);
+  }
+  to{
+      opacity: 1;
+      transform: perspective(500px) translate3d(0, 0, 0);
+  }
+}
