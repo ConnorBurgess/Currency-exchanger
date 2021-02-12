@@ -5,7 +5,15 @@ import './css/styles.css';
 async function getCall() {
   const response = await CurrencyService.getCurrency();
   
+    console.log(response.statusText)
     console.log(response)
+    const objArr = Object.keys(response.conversion_rates)
+    console.log(objArr);
+    console.log(response.conversion_rates[3])
+    console.log(response.conversion_rates.JPY)
+    for (let i = 0; i < Object.keys(response.conversion_rates).length; i++) {
+      document.getElementById("currency").innerHTML = document.getElementById("currency").innerHTML + `<option value="${objArr[i]}"></option>`
+    }
 }
 
 
