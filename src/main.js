@@ -9,20 +9,30 @@ async function getCall() {
   console.log(currency1);
   console.log(currency2);
   console.log(amount);
-  const response = await CurrencyService.getCurrency(currency1, currency2, amount);
-  const objList = await CurrencyService.getList();
-  const objKeys = Object.keys(objList.conversion_rates)
- const objValues = Object.keys(objList.conversion_rates)
+  try {
+    const response = await CurrencyService.getCurrency(currency1, currency2, amount);
+    if (response.result === "error") {
+      throw Error(response.error-type);
+    }
+} catch (error) {
+  console.log(Error(error.message))
+  return Error(error.message);
+}
+  //   const objList = await CurrencyService.getList();
 
-  for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
-    document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
-    document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
+  //   const objKeys = Object.keys(objList.conversion_rates)
+  //  const objValues = Object.keys(objList.conversion_rates)
 
-  }
+  //   for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
+  //     document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
+  //     document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
+
+  //   }
   document.getElementById("output").innerHTML = `
   Converting from ${currency1} to ${currency2} . . . 
   The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
   `
+  console.log(response);
 }
 
 
