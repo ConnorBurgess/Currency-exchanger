@@ -10,14 +10,13 @@ async function getCall() {
   console.log(currency2);
   console.log(amount);
   try {
+
     const response = await CurrencyService.getCurrency(currency1, currency2, amount);
+    console.log(response);
     if (response.result === "error") {
-      throw Error(response.error-type);
+      throw Error(response["error-type"]);
     }
-} catch (error) {
-  console.log(Error(error.message))
-  return Error(error.message);
-}
+
   //   const objList = await CurrencyService.getList();
 
   //   const objKeys = Object.keys(objList.conversion_rates)
@@ -33,6 +32,10 @@ async function getCall() {
   The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
   `
   console.log(response);
+} catch (error) {
+  document.getElementById("output").innerHTML = Error(error.message);
+  return Error(error.message);
+}
 }
 
 
