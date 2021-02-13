@@ -10,6 +10,7 @@ h1 {
   top: 1vw;
   right: 55vw;
   position:absolute;
+  display:none;
 }
 #search-card {
   display:flex;
@@ -31,7 +32,10 @@ font-family: 'Oranienbaum', serif;
 color: white;
 font-size: 25px;
 display: block;
-
+display: none;
+}
+#button-area button {
+  display:none;
 }
 
 #new-search:hover {
@@ -39,11 +43,8 @@ display: block;
 	background-color:#408c99;
 }
 
-#new-search:active {
-	position:relative;
-	top:1px;
-}
 #new-search {
+  display:none;
   top: 25vw;
   left: 30vw;
   position:absolute;
@@ -51,7 +52,6 @@ display: block;
   background:linear-gradient(to bottom, #599bb3 5%, #408c99 100%);
   background-color:#599bb3;
   border-radius:8px;
-  display:inline-block;
   cursor:pointer;
   color:#ffffff;
   font-family:Arial;
@@ -59,7 +59,7 @@ display: block;
   font-weight:bold;
   font-style:italic;
   padding:20px 76px;
-  text-decoration:none;
+
   text-shadow:0px 1px 23px #3d768a;
 }
 

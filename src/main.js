@@ -12,10 +12,11 @@ async function getCall() {
     if (response.result === "error") {
       throw Error(response["error-type"]);
     }
-    document.getElementById("output").innerHTML = `
-  Converting from ${currency1} to ${currency2} . . . 
-  The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
-  `
+    document.getElementById("output").innerHTML =
+    `
+    Converting from ${currency1} to ${currency2} . . . 
+    The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
+    `
     console.log(response);
   } catch (error) {
     document.getElementById("output").innerHTML = Error(error.message);
@@ -26,8 +27,6 @@ async function getCall() {
 
 async function getDropDown() {
   const objList = await CurrencyService.getList();
-  let checkObj = isEmpty(objList);
-  if (checkObj === false) {
   const objKeys = Object.keys(objList.conversion_rates)
   const objValues = Object.keys(objList.conversion_rates)
 
@@ -36,8 +35,23 @@ async function getDropDown() {
     document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
   }
 }
-}
+
 $(document).ready(function () {
+  $("#new-search").fadeIn(7000);
+  //Animated intro (https://codepen.io/kazed972/pen/bQOQGR)
+  var text = document.getElementById('main-word');
+  var newDom = '';
+  var animationDelay = 95;
+  for (let i = 0; i < text.innerText.length; i++) {
+    newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i]) + '</span>';
+  }
+  text.innerHTML = newDom;
+  var length = text.children.length;
+  for (let i = 0; i < length; i++) {
+    text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
+  }
+  // Animated intro end
+
   $('#convert').click(function (event) {
     getCall()
   })
@@ -49,10 +63,10 @@ $(document).ready(function () {
   }
 
   document.getElementById("new-search").onclick = function () {
+    console.log("button clicked")
+    $("#main-word").fadeOut(1000);
+    $("#new-search").fadeOut(1000);
+    $("#button-area").fadeIn(2000);
     getDropDown();
   }
 });
-
-function isEmpty(obj) {
-  return Object.keys(obj).length === 0;
-}
