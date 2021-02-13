@@ -15,7 +15,7 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 
 * * *
 
-## Setup instructions:  
+## Setup instructions (Step 1):  
 * Clone Repo from GitHub (Link: https://github.com/ConnorBurgess/Currency-exchanger.git)
 * Ensure Node and NPM are installed: [instructions here](https://github.com/ConnorBurgess/Currency-exchanger)
 * Open command line and navigate to top level directory
@@ -24,9 +24,15 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 * View source files in editor of choice or input command $ "npm run start" to view project in live server
 
 * * *
+## Get an API key (Step 2)
+* Create an account on [ExchangeRate-Api](https://www.exchangerate-api.com/)
+* Login and copy "Your API Key" on main page.
+* Create .env file in top level of project 
+* Insert line "API_KEY: {Your API key}" without quotes or curly brackets in .env file.
+* * *
 
 ## To Do:
-* 
+* Continue to improve style and user experience
 
 ## Additional comments:
 * Created on 2/12/21  
