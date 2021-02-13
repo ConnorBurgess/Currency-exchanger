@@ -83,10 +83,7 @@ display: none;
   color: #3C403D;
   font-stretch: condensed;
   transform: scale(1, 2);
-
-
 }
-
 #output {
   display: flex;
   font-family: 'Oranienbaum', serif;
@@ -99,6 +96,9 @@ display: none;
   background-color: rgb(199, 199, 199, 0.7);
   border-radius: 4px;
   display: none;
+  font-size: 35px;
+  font-weight: bold;
+  padding: 1vw;
 }
 .center{
   width: 100%;

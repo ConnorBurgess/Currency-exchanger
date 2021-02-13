@@ -13,7 +13,7 @@ async function getCall() {
       throw Error(response["error-type"]);
     }
     document.getElementById("output").innerHTML =
-    `
+      `
     Converting from ${currency1} to ${currency2} . . . 
     The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
     `

@@ -14,13 +14,12 @@ export default class CurrencyService {
   }
 
   static async getList() {
-    const sessionData = sessionStorage.getItem('savedData')
-    const key = "exchangeKey";
-    //Check if data in sessionStorage
+    console.log("button clicked")
+    const key = "listKey";
     let objList = sessionStorage.getItem(key);
     if (objList) {
       console.log("No API hit")
-      return objList.json();
+      return objList;
     }
     else {
       const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`
@@ -30,6 +29,8 @@ export default class CurrencyService {
         if (!objList.ok) {
           throw Error(objList.statusText);
         }
+        sessionStorage.setItem(key, JSON.stringify(objList));
+        console.log(objList);
         return objList.json();
       } catch (error) {
         document.getElementById("output").innerHTML = Error(error.message);
