@@ -34,9 +34,6 @@ font-size: 25px;
 display: block;
 display: none;
 }
-#button-area button {
-  display:none;
-}
 
 #new-search:hover {
 	background:linear-gradient(to bottom, #408c99 5%, #599bb3 100%);
@@ -90,7 +87,19 @@ display: none;
 
 }
 
-
+#output {
+  display: flex;
+  font-family: 'Oranienbaum', serif;
+  position: absolute;
+  color:white;
+  width: 35vw;
+  height: 15vw;
+  right: 40vw;
+  top: 10vw;
+  background-color: rgb(199, 199, 199, 0.7);
+  border-radius: 4px;
+  display: none;
+}
 .center{
   width: 100%;
   height: 100vh;

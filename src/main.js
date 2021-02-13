@@ -65,8 +65,8 @@ $(document).ready(function () {
   document.getElementById("new-search").onclick = function () {
     console.log("button clicked")
     $("#main-word").fadeOut(1000);
-    $("#new-search").fadeOut(1000);
-    $("#button-area").fadeIn(2000);
+    $("#new-search").fadeOut();
+    $("#button-area, #output").fadeIn(2000);
     getDropDown();
   }
 });
