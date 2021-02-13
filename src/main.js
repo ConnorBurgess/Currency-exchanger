@@ -1,6 +1,8 @@
 import CurrencyService from './js/currency-service.js'
 import $ from 'jquery';
-import './css/styles.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/styles.css'
 
 async function getCall() {
   let currency1 = document.getElementById("currency1").value;
@@ -9,19 +11,20 @@ async function getCall() {
   try {
     const response = await CurrencyService.getCurrency(currency1, currency2, amount);
     console.log(response);
-    if (response.result === "error") {
-      throw Error(response["error-type"]);
+    if (response.result !== "success") {
+      throw Error(response.statusText);
     }
-    document.getElementById("output").innerHTML =
+    document.getElementById("output").innerHTML +=
       `
+   <li>
     Converting from ${currency1} to ${currency2} . . . 
     The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
+   </li>
     `
-    console.log(response);
   } catch (error) {
-    document.getElementById("output").innerHTML = Error(error.message);
-    document.getElementById("output").innerHTML === "Error: malformed-request" ? document.getElementById("output").innerHTML += `. <strong>Please input valid currencies and amount. </strong>`
-      : Error(error.message);
+    document.getElementById("output").innerHTML === "Error: Failed to fetch" ? document.getElementById("output").innerHTML += `. <strong>Please input valid currency codes and numerical amount. </strong>`
+      : document.getElementById("output").innerHTML
+    return Error(error.message);
   }
 }
 
@@ -37,8 +40,17 @@ async function getDropDown() {
 }
 
 $(document).ready(function () {
-  $("#new-search").fadeIn(7000);
-  //Animated intro (https://codepen.io/kazed972/pen/bQOQGR)
+  setTimeout(() => {
+    $("#sub-word").slideDown(1000);
+  }, 3000);
+  setTimeout(() => {
+    $("#third-word").slideDown(1000);
+  }, 4000);
+  setTimeout(() => {
+    $("#new-search").slideDown(1000);
+  }, 5500);
+
+  //Title animation (https://codepen.io/kazed972/pen/bQOQGR)
   var text = document.getElementById('main-word');
   var newDom = '';
   var animationDelay = 95;
@@ -50,7 +62,6 @@ $(document).ready(function () {
   for (let i = 0; i < length; i++) {
     text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
   }
-  // Animated intro end
 
   $('#convert').click(function (event) {
     getCall()
@@ -64,9 +75,8 @@ $(document).ready(function () {
 
   document.getElementById("new-search").onclick = function () {
     console.log("button clicked")
-    $("#main-word").fadeOut(1000);
-    $("#new-search").fadeOut();
-    $("#button-area, #output").fadeIn(2000);
+    $("#main-word, #sub-word, #third-word, #new-search").fadeOut(1000);
+    $("#button-area, #output").slideDown(2000);
     getDropDown();
   }
 });

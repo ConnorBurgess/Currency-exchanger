@@ -2,31 +2,36 @@
 <head>
   <title>Currency Exchanger</title>
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Oranienbaum&display=swap" rel="stylesheet">
 </head>
-
-<body id="">
-  <h1> Simple Currency Search</h1>
-  <div id ="search-card">
-    <p id="main-word"> Navigating Forex should be<span id = "easy-word"> simple</span></p>
-  </div>
-  <button id="new-search">Begin a new Currency Search</button>
-  <div id="output"></div>
-  <div id="button-area"> 
-  <label for="currency1">Convert From</label>
-  <input list="currency-list" id="currency1" autocomplete="off">
-  <datalist id="currency-list">
-  </datalist>
-  <label for="currency2">Convert To</label>
-  <input list="currency-list2" id="currency2" autocomplete="off">
-  <datalist id="currency-list2">
-  </datalist>
-  <label for="amount">Enter Amount</label>
-  <input input="number" id="amount" value="100" autocomplete="off">
-  <button id="convert">Convert</button>
-  <button id="clear-input">Clear Input</button>
+<body>
+  <div class= "jumbotron"> 
+  <h1> <span id="smart-currency"> Smart</span> Exchange Converter <span id="smart-currency2"> v1.1.1 </span></h1>
 </div>
+  <div id="search-card">
+    <p id="main-word"> Real-time Currency Solutions</p>
+  </div>
+  <p id="sub-word"> Smart Exchange Converter
+  </p>
+  <p id="third-word"> Click to begin a new
+  <p></p>
+  <button id="new-search">Currency Search</button>
+  <div id="output"><ul></ul></div>
+  <div id="button-area">
+    <label for="currency1">Convert From</label>
+    <input list="currency-list" id="currency1" autocomplete="off">
+    <datalist id="currency-list">
+    </datalist>
+    <label for="currency2">Convert To</label>
+    <input list="currency-list2" id="currency2" autocomplete="off">
+    <datalist id="currency-list2">
+    </datalist>
+    <label for="amount">Enter Amount</label>
+    <input input="number" id="amount" value="100" autocomplete="off">
+    <button id="convert">Convert</button>
+    <button id="clear-input">Clear Input</button>
+  </div>
 
 </body>
+
 </html>
