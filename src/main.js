@@ -10,17 +10,19 @@ async function getCall() {
   let amount = document.getElementById("amount").value;
   try {
     const response = await CurrencyService.getCurrency(currency1, currency2, amount);
-    console.log(response);
     if (response.result !== "success") {
       throw Error(response.statusText);
     }
-    document.getElementById("output").innerHTML +=
-      `
-   <li>
-    Converting from ${currency1} to ${currency2} . . . 
-    The conversion rate is ${response.conversion_rate}. $${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
-   </li>
-    `
+    response.conversion_result === undefined ? document.getElementById("output").innerHTML +=
+      `<li>
+      The current conversion rate from ${currency1} to ${currency2} is ${response.conversion_rate}.
+      Please input an amount in order to perform a conversion.
+      </li>`
+      : document.getElementById("output").innerHTML +=
+      `<li>
+      Converting from ${currency1} to ${currency2} . . . 
+      The conversion rate is ${response.conversion_rate}. ${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
+      </li>`
   } catch (error) {
     document.getElementById("output").innerHTML === "Error: Failed to fetch" ? document.getElementById("output").innerHTML += `. <strong>Please input valid currency codes and numerical amount. </strong>`
       : document.getElementById("output").innerHTML
@@ -32,7 +34,8 @@ async function getDropDown() {
   const objList = await CurrencyService.getList();
   const objKeys = Object.keys(objList.conversion_rates)
   const objValues = Object.keys(objList.conversion_rates)
-
+  const key = "listKey";
+  sessionStorage.setItem(key, JSON.stringify(objList));
   for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
     document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
     document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
@@ -74,7 +77,6 @@ $(document).ready(function () {
   }
 
   document.getElementById("new-search").onclick = function () {
-    console.log("button clicked")
     $("#main-word, #sub-word, #third-word, #new-search").fadeOut(1000);
     $("#button-area, #output").slideDown(2000);
     getDropDown();

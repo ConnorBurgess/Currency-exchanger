@@ -17,20 +17,15 @@ export default class CurrencyService {
     const key = "listKey";
     let objList = sessionStorage.getItem(key);
     if (objList) {
-      console.log("No API hit")
-      console.log(JSON.parse(objList));
       return JSON.parse(objList);
     }
     else {
       const url = `https://v6.exchangerate-api.com/v6/${process.env.API_KEY}/latest/USD`
       try {
-        console.log("API hit");
         objList = await fetch(url);
         if (!objList.ok) {
           throw Error(objList.statusText);
         }
-        sessionStorage.setItem(key, JSON.stringify(objList));
-        console.log(objList);
         return objList.json();
       } catch (error) {
         document.getElementById("output").innerHTML = Error(error.message);
