@@ -1,6 +1,8 @@
 # Currency Exchanger
 #### Created By: Connor Burgess 
 * * *
+<p align="center"><img src="src/assets/images/thumb.png" alt="Kitten"
+	title="A cute kitten" width="350" height="200"></p>
 
 ## Description  
 Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overview) in order to allow user to perform global currency conversions with ease.
@@ -15,7 +17,16 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 
 * * *
 
-## Setup instructions (Step 1):  
+## Setup (Step 1): Get an API key
+* Create an account on [ExchangeRate-Api](https://www.exchangerate-api.com/)
+* Login and copy "Your API Key" on main page.
+* Create .env file in top level of project 
+* Insert line "API_KEY: {Your API key}" without quotes or curly brackets in .env file.
+
+* * *
+
+
+## Setup (Step 2): Build Project  
 * Clone Repo from GitHub (Link: https://github.com/ConnorBurgess/Currency-exchanger.git)
 * Ensure Node and NPM are installed: [instructions here](https://github.com/ConnorBurgess/Currency-exchanger)
 * Open command line and navigate to top level directory
@@ -23,12 +34,6 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 * Input command $ "npm run build" (no quotes) in order to build package.
 * View source files in editor of choice or input command $ "npm run start" to view project in live server
 
-* * *
-## Get an API key (Step 2)
-* Create an account on [ExchangeRate-Api](https://www.exchangerate-api.com/)
-* Login and copy "Your API Key" on main page.
-* Create .env file in top level of project 
-* Insert line "API_KEY: {Your API key}" without quotes or curly brackets in .env file.
 * * *
 
 ## To Do:
