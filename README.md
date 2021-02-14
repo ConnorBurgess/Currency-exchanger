@@ -14,6 +14,7 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 * CSS
 * HTML
 * JQuery
+* BootStrap v5
 
 * * *
 
