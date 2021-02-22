@@ -15,6 +15,9 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 * HTML
 * JQuery
 * BootStrap v5
+* NPM
+* WebPack
+* ESLint
 
 * * *
 
@@ -22,7 +25,7 @@ Project utilizes [ExchangeRate-Api](https://www.exchangerate-api.com/docs/overvi
 * Create an account on [ExchangeRate-Api](https://www.exchangerate-api.com/)
 * Login and copy "Your API Key" on main page.
 * Create .env file in top level of project 
-* Insert line "API_KEY: {Your API key}" without quotes or curly brackets in .env file.
+* Insert line "API_KEY={Your API key}" without quotes or curly brackets in .env file.
 
 * * *
 

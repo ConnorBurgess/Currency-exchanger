@@ -1,8 +1,8 @@
-import CurrencyService from './js/currency-service.js'
+import CurrencyService from './js/currency-service.js';
 import $ from 'jquery';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './css/styles.css'
+import './css/styles.css';
 
 async function getCall() {
   let currency1 = document.getElementById("currency1").value;
@@ -22,23 +22,29 @@ async function getCall() {
       `<li>
       Converting from ${currency1} to ${currency2} . . . 
       The conversion rate is ${response.conversion_rate}. ${amount}${currency1} is equal to ${response.conversion_result}${currency2}.
-      </li>`
+      </li>`;
   } catch (error) {
+
     document.getElementById("output").innerHTML === "Error: Failed to fetch" ? document.getElementById("output").innerHTML += `. <strong>Please input valid currency codes and numerical amount. </strong>`
-      : document.getElementById("output").innerHTML
+      : document.getElementById("output").innerHTML += `<li>Error: Failed to retrieve conversion. Please ensure currencies exist in dropdown list and review syntax.</li>`;
     return Error(error.message);
   }
 }
 
 async function getDropDown() {
-  const objList = await CurrencyService.getList();
-  const objKeys = Object.keys(objList.conversion_rates)
-  const objValues = Object.keys(objList.conversion_rates)
-  const key = "listKey";
-  sessionStorage.setItem(key, JSON.stringify(objList));
-  for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
-    document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`
-    document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`
+  try {
+    const objList = await CurrencyService.getList();
+    const objKeys = Object.keys(objList.conversion_rates);
+    const key = "listKey";
+    sessionStorage.setItem(key, JSON.stringify(objList));
+    for (let i = 0; i < Object.keys(objList.conversion_rates).length; i++) {
+      document.getElementById("currency-list").innerHTML = document.getElementById("currency-list").innerHTML + `<option value="${objKeys[i]}"></option>`;
+      document.getElementById("currency-list2").innerHTML = document.getElementById("currency-list2").innerHTML + `<option value="${objKeys[i]}"></option>`;
+    }
+
+  } catch (error) {
+    document.getElementById("output").innerHTML = Error(error.message) + ". Please verify API keys are correct.";
+    return Error(error.message);
   }
 }
 
@@ -66,19 +72,19 @@ $(document).ready(function () {
     text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
   }
 
-  $('#convert').click(function (event) {
-    getCall()
-  })
+  $('#convert').click(function () {
+    getCall();
+  });
 
   document.getElementById("clear-input").onclick = function () {
     document.getElementById("currency1").value = "";
     document.getElementById("currency2").value = "";
     document.getElementById("amount").value = "";
-  }
+  };
 
   document.getElementById("new-search").onclick = function () {
     $("#main-word, #sub-word, #third-word, #new-search").fadeOut(1000);
     $("#button-area, #output").slideDown(2000);
     getDropDown();
-  }
+  };
 });
